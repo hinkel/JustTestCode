@@ -280,7 +280,7 @@ void loop(void)
 #ifdef BARO
         if (sensors(SENSOR_BARO))
         {
-            if ((rcOptions[BOXBARO] && GroundAltInitialized && f.ARMED) || (f.BARO_MODE && rcData[THROTTLE] < ESCnoFlyThrottle))
+            if ((rcOptions[BOXBARO] && GroundAltInitialized && f.ARMED) || (f.BARO_MODE && f.ARMED && rcData[THROTTLE] < ESCnoFlyThrottle))
             {
                 if (!f.BARO_MODE)                                           // Initialize Baromode here if it isn't already
                 {
