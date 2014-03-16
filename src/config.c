@@ -207,7 +207,7 @@ static void resetConf(void)
     cfg.rc_auxch                  = 4;          // [4 - 6] cGiesen: Default = 4, then like the standard! Crashpilot: Limited to 6 aux for safety
     cfg.rc_killt                  = 0;          // Time in ms when your arm switch becomes a Killswitch, 0 disables the Killswitch, can not be used together with FEATURE_INFLIGHT_ACC_CAL
     cfg.rc_flpsp                  = 0;          // [0-1] When enabled(1) and upside down in acro or horizon mode only half throttle is applied
-    cfg.rc_motor                  = 0;          // [0-2] Behaviour when thr < rc_minchk: 0= minthrottle no regulation, 1= minthrottle&regulation, 2= Motorstop 
+    cfg.rc_motor                  = 1;          // [0-2] Behaviour when thr < rc_minchk: 0= minthrottle no regulation, 1= minthrottle&regulation, 2= Motorstop 
 
     // Motor/ESC/Servo
 //  cfg.esc_min                   = 1150;       // ORIG
