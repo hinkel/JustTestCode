@@ -280,7 +280,7 @@ void loop(void)
 #ifdef BARO
         if (sensors(SENSOR_BARO))
         {
-            if (rcOptions[BOXBARO] && GroundAltInitialized && f.ARMED)
+            if ((rcOptions[BOXBARO] && GroundAltInitialized && f.ARMED) || (f.BARO_MODE && rcData[THROTTLE] < ESCnoFlyThrottle))
             {
                 if (!f.BARO_MODE)                                           // Initialize Baromode here if it isn't already
                 {
@@ -335,7 +335,7 @@ void loop(void)
             }
             else
             {
-                f.BARO_MODE     = 0;                                            // No Baroswitch, no Autoland/start
+                f.BARO_MODE     = 0;                                            // No Baroswitch , no Autoland/start // To disable Baro throttle > ESCnoFlyThrottle 
                 AutolandState   = 0;
                 AutostartState  = 0;
                 LastAltThrottle = 0;
