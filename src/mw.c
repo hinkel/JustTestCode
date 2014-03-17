@@ -259,7 +259,7 @@ void loop(void)
                 rcOptions[BOXGPSHOLD] = 0;                                  // GPS hold OFF
                 rcOptions[BOXGPSHOME] = 1;                                  // RTL
                 tmp0 = (int16_t)GPS_distanceToHome - DistanceToHomeMetersOnRTLstart; // tmp0 contains flyawayvalue
-                if ((cfg.gps_rtl_flyaway && tmp0 > (int16_t)cfg.gps_rtl_flyaway) ||
+                if ((cfg.gps_rtl_flyaway !=0 && tmp0 > (int16_t)cfg.gps_rtl_flyaway) ||
                         (wp_status == WP_STATUS_DONE && ph_status == PH_STATUS_DONE)) RTLstate++;
                 break;
             case 7:                                                         // Do Autoland
