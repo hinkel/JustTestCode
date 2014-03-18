@@ -187,7 +187,7 @@ static void GPS_HzSandbox(void)
             speed = GPS_calc_desired_speed();
             GPS_calc_nav_rate(speed);                                           // use error as the desired rate towards the target Desired output is in nav_lat and nav_lon where 1deg inclination is 100
 
-            if (cfg.nav_controls_heading && wp_distance > 200)                  // Tail control only update beyond 2 m
+            if (cfg.nav_controls_heading && wp_distance > cfg.gps_wp_radius)                  // Tail control only update beyond 2 m or cfg.gps_wp_radius 
             {
                 magHold = (float)nav_bearing * 0.01f;                           // tmpflt is in degree now
                 if (cfg.nav_tail_first) magHold = wrap_180(magHold - 180.0f);
@@ -195,7 +195,7 @@ static void GPS_HzSandbox(void)
 
             if ((wp_distance <= cfg.gps_wp_radius) || check_missed_wp())        // if yes switch to poshold mode
             {
-                if (cfg.nav_rtl_lastturn && nav_mode == NAV_MODE_RTL) magHold = nav_takeoff_heading;  // rotates it's head to takeoff direction if wanted
+                if (cfg.nav_rtl_lastturn && nav_mode == NAV_MODE_RTL) magHold = nav_takeoff_heading;  // rotates it's head to takeoff direction if wanted // nav_mode == NAV_MODE_RTL
                 nav_mode   = NAV_MODE_POSHOLD;
                 wp_status  = WP_STATUS_DONE;
                 PH1stRun   = true;
